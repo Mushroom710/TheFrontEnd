@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #bfa;
+        }
+    </style>
+    <script>
+        function fn(){
+            alert('ok');
+        }
+        //只执行一次的定时器：第一个参数是：函数名，第二个是间隔时间，毫秒
+        var timeout = setTimeout(fn,2000);
+        clearTimeout(timeout);
+        //创建执行多次的定时器
+        var timeout2 = setInterval(fn,2000);
+        clearInterval(timeout2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

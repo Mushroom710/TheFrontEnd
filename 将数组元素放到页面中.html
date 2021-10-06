@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list li{
+            width: 500px;
+            margin: 50px auto;
+            list-style: none;
+            border-bottom: 2px dotted green;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var arr = ['红海行动','1921','攀登者','中国机长','中国医生','使命召唤'];
+            var sTr = '';
+            var oUl = document.getElementById('list');
+            for(var i = 0;i<arr.length;i++){
+                sTr += '<li>'+arr[i]+'</li>';
+            }
+            // alert(sTr);
+            oUl.innerHTML = sTr;
+        }
+    </script>
+</head>
+<body>
+    <!-- 高级写法：ul.list>li{文字}*6 \n -->
+    <ul class="list" id="list">
+        <!-- <li>电影名称</li>
+        <li>电影名称</li>
+        <li>电影名称</li>
+        <li>电影名称</li>
+        <li>电影名称</li>
+        <li>电影名称</li> -->
+    </ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var alist = new Array(1,2,3,4,5);
+        //数组内的元素类型可以不相同
+        // var blist = [1,2,3,'a','b','c'];
+        // alert(alist)
+        // alert(blist)
+        //获取数组长度
+        // alert(alist.length);
+        // alert(alist[0]);//弹出 1
+        // alert(alist.join()); 
+        // alist.push('ok');
+        // alert(alist);
+        // alist.pop();
+        // alert(alist);
+        // alert(alist.reverse());
+        // alert(alist.indexOf(2));
+        // alist.splice(1,2)
+        // alert(alist);
+        // alist.splice(1,2,4,5,6,7,8,9);
+        // alert(alist);
+        var list = ['z','a','a','e','w','d','e','z','a','a','e','w','d','e'];
+        alert(list);
+        var newlist = [];
+        for(var i = 0;i<list.length;i++){
+            if(list.indexOf(list[i]) == i){
+                newlist.push(list[i]);
+            }
+        }
+        alert(newlist);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

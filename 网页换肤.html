@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./helloworld/css/skin01.css" id="link01">
+    <script>
+        // 仔细看好属性名，别写错啦！！！
+        window.onload = function(){
+            var link1 = document.getElementById("link01");
+            var btn1 = document.getElementById("btn01");
+            var btn2 = document.getElementById("btn02");
+
+            btn1.onclick = function () {
+                link1.href = './helloworld/css/skin01.css';
+            }
+
+            btn2.onclick = function () {
+                link1.href = './helloworld/css/skin02.css';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>网页换肤</h1>
+    <input type="button" value="皮肤一" id="btn01">
+    <input type="button" value="皮肤二" id="btn02">
+    <input type="button" name="" id="" value="按钮">
+    <div onclick="alert('ok')">这是换肤</div>
+    <select name="" id="">
+        <option value="0">张三</option>
+        <option value="1">李四</option>
+    </select>
+</body>
+
+</html>

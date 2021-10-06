@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #bfa;
+        }
+    </style>
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        alert($);
+        //不是硬性规定，只是为了更好的区分是哪种方式获取得对象
+        // window.onload变量名用 o 打头
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            alert('这是window.onload:'+oBox);
+        }
+
+        // jQuery的写法，$('')中的参数是css选择器，class：.className;id：#idName
+        // jQuery用变量名用 $ 打头 
+        
+        //$(document).ready(function(){
+        //     var $box = $('#box')
+        //     alert('这是jquery：'+$box);
+        // });
+        // 简写方式：
+        $(function(){
+            var $box = $('#box');
+            alert('这是jquery：' + $box);
+        })
+    </script>
+</head>
+<body>
+    <div id="box">这是一个div</div>
+</body>
+</html>

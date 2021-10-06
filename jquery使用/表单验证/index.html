@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+            background-color: aquamarine;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            margin: 10px auto 50px;
+            height: 30px;
+        }
+        span{
+            display: none;
+        }
+    </style>
+    <script src="../../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script src="./jquery.js"></script>
+</head>
+<body>
+    <form id="from1">
+        <ul>
+            <li>
+                <label for="">用户名</label>
+                <input type="text" class="username" id="username" autocomplete="off">
+               <br> <span>提示信息</span>
+            </li>
+            <li>
+                <label for="">密码  </label>
+                <input type="password" class="pwd" id="pwd">
+               <br> <span>提示信息</span>
+            </li>
+            <li>
+                <label for="">确认密码</label>
+                <input type="password" class="pwd" id="pwd2">
+                <br><span>提示信息</span>
+            <li>
+                <input type="submit" value="提交" id="submit">
+            </li>
+        </ul>
+    </form>
+</body>
+</html>

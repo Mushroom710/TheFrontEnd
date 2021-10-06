@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天对话框</title>
+    <style>
+        body{
+            background-color: yellowgreen;
+        }
+        .talk_show{
+            width: 500px;
+            height: 500px;
+            background: #bfa;
+        }
+    </style>
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            var $words = $('#words'),
+            $who = $('#who'),
+            $talk = $('#talkwords'),
+            $btn = $('#talksub');
+
+            $btn.click(function(){
+                var sVal1 = $who.prop('value');
+                // alert(sVal1);
+                var sVal2 = $talk.prop('value');
+                $talk.prop('value','');
+                var sTr = '';
+                if(sVal2 == ''){
+                    alert('不能为空');
+                    return;
+                }
+                if(sVal1 == 0){
+                    sTr ='<div class="atals"><span>A说：'+ sVal2 +'</span ></div >';
+                }else{
+                    sTr = '<div class="atals"><span>B说：'+ sVal2 +'</span ></div >';
+                }
+                $words.html($words.html() + sTr);
+            })
+        })
+    </script>
+</head>
+<body>
+    <center>
+    <div class="talk_con">
+        <div class="talk_show" id="words">
+            <div class="atals">
+                <span>A说：吃饭了嘛？</span>
+            </div>
+            <div class="btals">
+               <span>B说：还没。。</span>
+            </div>
+        </div>
+        <div class="talk_input">
+            <select class="who_talk" id="who">
+                <option value="0">A说：</option>
+                <option value="1">B说：</option>
+            </select>
+            <input type="text" class= "talk_word" id="talkwords">
+            <input type="button" value="发送" class="talk_sub" id="talksub">
+        </div>
+    </div>
+    </center>
+</body>
+</html>

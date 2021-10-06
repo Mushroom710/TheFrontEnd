@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #bfa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .pop_con {
+            width: 500px;
+            height: 500px;
+            margin: 100px 0 0 500px;
+            float: left;
+            background-color: aqua;
+            /* display: none; */
+        }
+
+        .ba {
+            width: 50px;
+            height: 50px;
+            background-color: chartreuse;
+            float: right;
+        }
+
+        .ba a {
+            font-size: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .pop_head {
+            background-color: chocolate;
+        }
+
+        .mask {
+            height: 800px;
+            width: 1500px;
+            /* float: left; */
+            background-color: #ddd;
+        }
+    </style>
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                $('.content').show();
+                return false;
+            });
+            $('#a').click(function () {
+                $('.content').hide();
+                return false;
+            });
+            // 点击弹框的其他地方，也可以关闭弹窗
+            // 这时会有冒泡
+            $(document).click(function(){
+                $('.content').hide();
+                return false;
+            });
+
+            //点击弹窗，不应该关闭（冒泡的原因）
+            $('.pop_con').click(function(){
+                return false;
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <input type="button" value="弹出弹窗" id="btn">
+    <div class="content">
+        <div class="pop_con">
+            <div class="pop_head">弹窗</div>
+            <div class="ba" id="ba"><a href="#" id="a">x</a></div>
+            <div class="con">这是内容</div>
+        </div>
+        <div class="mask"></div>
+    </div>
+</body>
+
+</html>

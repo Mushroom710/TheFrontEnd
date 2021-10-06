@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classDiv{
+            color: rebeccapurple;
+            font-size: 20px;
+        }
+        .classDiv2{
+            color: pink;
+            font-size: 30px;
+        }
+    </style>
+    <script>
+        //注意要以分号结尾，基本语法
+        // var iNum = 12;
+        // var sTr = 'abc';
+        // var bIsKo = true;
+        // var uDefine;
+        // var num = 12,s='ok',boo = false,u;
+        // alert(iNum);
+        // alert(sTr);
+        // alert(bIsKo);
+        // alert(uDefine);
+        //操作元素属性
+        //window.onload 表示：当整个页面加载完成，再执行其中的代码块
+        window.onload = function(){
+            var oDiv = document.getElementById("div01");
+            //读取
+            var sTxt = oDiv.innerHTML;
+            alert(sTxt);
+            //写入
+            // oDiv.innerHTML = '<a href="www.baidu.com">百度</a>'
+            oDiv.className = "classDiv2"
+        }
+    </script>
+</head>
+<body>
+    <div id="div01" class="classDiv">这是一个div元素</div>
+</body>
+</html>

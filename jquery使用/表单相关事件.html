@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            var $input = $('#input1')
+            var $from = $('#form1');
+
+            // 绑定失去焦点的事件
+            $input.blur(function(){
+                //弹出input中的值
+                // alert($(this).val());
+            })
+            //绑定submit事件
+            $from.submit(function(){
+                // alert('提交了');
+
+                //可以阻止表单的默认提交
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+    <form action="" id="form1">
+        <label for="">用户名</label>
+        <input type="text" id="input1">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

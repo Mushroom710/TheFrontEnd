@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #bfa;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            background: greenyellow;
+            /* 相对于浏览器定位 */
+            position: fixed;
+            top: 100px;
+            left: 0px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            var iLeft = 0;
+            var timer = setInterval(fnMove,10);
+            function fnMove(){
+                iLeft += 3;
+                if(iLeft == 600){
+                    clearInterval(timer);
+                    return;
+                }
+                //原理：通过一定的时间间隔不断给left加数值，
+                // 既可以做到动起来的效果
+                oBox.style.left = iLeft + 'px';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box" id="box">帅</div>
+</body>
+</html>

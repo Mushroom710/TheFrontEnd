@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #bfa;
+        }
+    </style>
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            var $div01 = $('#div01');
+            var $span = $('.box span');
+            var $box = $('.box');
+            var $li = $('li');
+            var $box2 = $('div[class="box2"]');
+
+            $div01.css({"color":"red","font-size":30});
+            $span.css({"color":"gold","font-size":40});
+            $box.css({"color":"green","font-size":50});
+            $li.css({"background":"yellowgreen","font-size":"30px"});
+            $box2.css({"color":"blue","font":"30px bold"});
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <div id="div01">这是第一个div</div>
+    <div class="box">这是第二个<span>div</span></div>
+    <div class="box">这是第三个div</div>
+    <div class="box2">这是第四个div</div>
+    <ul>
+        <li>针不错</li>
+        <li>针不错</li>
+        <li>针不错</li>
+        <li>针不错</li>
+        <li>针不错</li>
+        <li>针不错</li>
+    </ul>
+</body>
+</html>

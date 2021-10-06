@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #bfa;
+        }
+
+        body,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .list_con {
+            width: 1500px;
+            height: 200px;
+            border: 2px black solid;
+            margin: 10px auto 0;
+            background-color: rgb(0, 255, 157);
+            position: relative;
+            overflow: hidden;
+            margin-top: 100px;
+        }
+
+        .list_con ul {
+            list-style: none;
+            width: 3000px;
+            height: 200px;
+            position: absolute;
+            top: 0px;
+            left: 0;
+        }
+
+        .list_con li {
+            height: 180px;
+            width: 320px;
+            float: left;
+            margin: 10px 10px 0 0;
+        }
+        .btn{
+            width: 200px;
+            height: 100px;
+            margin: auto;
+        }
+        .lgt{
+            font-size: 20px;
+            background: brown;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            float: left;
+            margin: 10px;
+            line-height: 40px;
+        }
+    </style>
+    <script>
+        //无缝滚动原理：要滚动的图复制一份，然后滚动，
+        // 达到相应条件就重置图片的顺序，继续滚动
+        window.onload = function () {
+            // 获取对应标签的对象
+            var oList = document.getElementById('list');
+            var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var oSlide = document.getElementById('slide');
+            var iSpeed = -3;//速度增量
+            var iLeft = 0;//位移
+            var iSpeed2 = iSpeed;
+            var iLastSpeed = -3;//用于保存上一次的iSpeed的值
+            oList.innerHTML += oList.innerHTML;//复制一份
+            var timer = setInterval(fnMove,30);
+            // 滚动函数
+            function fnMove(){
+                iLeft += iSpeed;
+                //iLeft <-1150 需要自己计算
+                if(iLeft<-1150){
+                    iLeft = 0;
+                }else if(iLeft > 0){
+                    iLeft = -1150;
+                }
+                oList.style.left = iLeft + 'px';
+            }
+            //左右两个箭头点击事件
+            oBtn1.onclick = function(){
+                iSpeed = iSpeed;
+            }
+            oBtn2.onclick = function(){
+                iSpeed = -iSpeed;
+            }
+            // 鼠标移入，滚动停止，鼠标移出，滚动继续
+            //简单粗暴的方法：清除定时器
+            oSlide.onmouseover = function(){
+                // clearInterval(timer);
+                iLastSpeed = iSpeed;
+                iSpeed = 0;
+            }
+            oSlide.onmouseout = function(){
+                // timer = setInterval(fnMove,10);
+                iSpeed = iLastSpeed;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="btn">
+        <div class="lgt" id="btn1">左&lt</div>
+        <div class="lgt" id="btn2">右&gt</div>
+    </div>
+    <div class="list_con" id="slide">
+        <ul id="list">
+            <li class=""><a href="#"><img src="./helloworld/img/斗鱼/Aemo苏婉.jpg"></a></li>
+            <li class=""><a href="#"><img src="./helloworld/img/斗鱼/Ai田幸儿.jpg"></a></li>
+            <li class=""><a href="#"><img src="./helloworld/img/斗鱼/Happy天天同学.jpg"></a></li>
+            <li class=""><a href="#"><img src="./helloworld/img/斗鱼/Yomi熙爷.jpg"></a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

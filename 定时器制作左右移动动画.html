@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #bfa;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            /* background: greenyellow; */
+            /* 相对于浏览器定位 */
+            position: fixed;
+            top: 100px;
+            left: 0px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            var iLeft = 0;
+            var iSpeed = 3;//速度增量
+            var timer = setInterval(fnMove,10);
+            function fnMove(){
+                iLeft += iSpeed;
+                if(iLeft > 1000){
+                    iSpeed = -iSpeed;//把增量置为负数
+                }else if(iLeft < 0){
+                    iSpeed = -iSpeed;//重新置为正数
+                }
+                //原理：通过一定的时间间隔不断给left加数值，
+                // 既可以做到动起来的效果
+                oBox.style.left = iLeft + 'px';
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- <div class="box" id="box"></div> -->
+    <div class="box" id="box"><img src="./helloworld/img/斗鱼/冯甜甜i.jpg" alt=""></div>
+</body>
+</html>

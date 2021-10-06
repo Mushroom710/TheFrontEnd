@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #bfa;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+        .content{
+            width: 5400px;
+            height: 2400px;
+            border: 2px black solid;
+            margin: 200px auto;
+            position: relative;
+            overflow: hidden;
+            margin-top: 200px;
+        }
+        .list_con ul{
+            width: 10800px;
+            height: 2340px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+        .list_con li{
+            height: 2340px;
+            width: 1080px;
+            list-style: none;
+            float: left;
+        }
+        .twobtn{
+            width: 600px;
+            height: 100px;
+            /* background: gold; */
+            margin: -100px auto;
+        }
+        .btn{
+            font-size: 200px;
+            float: left;
+            margin-left: 100px;
+            cursor: pointer;
+            background: yellowgreen;
+            border-radius: 25px;
+        }
+        .btn:hover{
+            color: royalblue;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oList = document.getElementById('list');
+            var obtn1 = document.getElementById('btn1');
+            var obtn2 = document.getElementById('btn2');
+            oList.innerHTML += oList.innerHTML;
+            var iLeft = 0;
+            var iSpeed = -10;
+            var lastSpeed = -10;
+            var iSpeed2 = iSpeed;
+            //定时器
+            setInterval(fnMove,10);
+            // oList.style.left = '1000px';
+            function fnMove(){
+                iLeft += iSpeed;
+                if(iLeft <-5399){
+                    iLeft = 0;
+                }else if(iLeft > 0){
+                    iLeft = -5399;
+                }
+                oList.style.left = iLeft + 'px';
+            }
+            oList.onmouseover = function(){
+                lastSpeed = iSpeed;
+                iSpeed = 0;
+            }
+            oList.onmouseout = function(){
+                iSpeed = lastSpeed;
+            }
+            obtn1.onclick = function(){
+                iSpeed = iSpeed2;
+            }
+            obtn2.onclick = function(){
+                iSpeed = -iSpeed2;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="list_con" id="list_con">
+            <ul class="list" id="list">
+                <li><img src="../helloworld/img/微信10-3号/32张图.jpg" alt=""></li>
+                <li><img src="../helloworld/img/微信10-3号/33张图.jpg" alt=""></li>
+                <li><img src="../helloworld/img/微信10-3号/12张图.jpg" alt=""></li>
+                <!-- <li><img src="../helloworld/img/微信10-3号/13张图.jpg" alt=""></li> -->
+                <li><img src="../helloworld/img/微信10-3号/6张图.jpg" alt=""></li>
+                <li><img src="../helloworld/img/微信10-3号/31张图.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <div class="twobtn">
+        <div class="btn" id="btn1">左</div>
+        <div class="btn" id="btn2">右</div>
+    </div>
+</body>
+</html>
