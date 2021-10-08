@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #bfbfbf;
+        }
+        .box{
+            height: 500px;
+            width: 500px;
+            margin: 100px auto 0;
+        }
+        .delet,.up,.down{
+            text-decoration: none;
+            margin:5px 10px;
+        }
+    </style>
+
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            var $txt = $('#txt');
+            var $btn = $("#btn");
+            var $list = $('.list');
+
+            $btn.click(function(){
+                //获取输入框中的值
+                var sTr = $txt.val();
+                //获取到后清空输入框
+                $txt.val('');
+
+                if(sTr == ''){
+                    alert('输入框不能为空');
+                    return;
+                }
+                var $li = $('<li><span>'+sTr+'</span><a href="#" class="delet">删除</a><a href="#" class="up">上<a href="#" class="down">下</a></a></li>');
+                $li.appendTo($list);
+
+                //由于新添加的li不在下面那个$del中
+                //所以，没添加一个li，就绑定一次事件
+                /*$del2 = $li.find('.delet');
+                $del2.click(function(){
+                    $(this).parent().remove();
+                });*/
+            })
+            //删除操作
+            /*var $del = $('.delet');
+            $del.click(function(){
+                $(this).parent().remove();
+            });*/
+            //上面这种写法性能不高，而且写了很多多余代码
+            // 采用事件委托的写法
+            $list.delegate('a','click',function(){
+                // 因为一个li中有三个a标签，需要区分开来，所以：
+                //获取冒泡元素的特征，这里用class属性区分每一个元素
+                var $sTr = $(this).prop('class');
+                //删除操作
+                if($sTr == 'delet'){
+                    $(this).parent().remove();
+                }
+                //上移操作
+                if($sTr == 'up'){
+                    //判断是否是第一条
+                    //如果是第一条，那么会返回一个空对象，空对象的length为0
+                    if($(this).parent().prev().length == 0){
+                        alert('到顶了');
+                        return;
+                    }
+                    //上移
+                    $(this).parent().insertBefore($(this).parent().prev());
+                }
+                //下移操作，与上移操作类似
+                if($sTr == 'down'){
+                    //判断是否是最后一条
+                    if($(this).parent().next().length == 0){
+                        alert('到低了');
+                        return;
+                    }
+                    $(this).parent().insertAfter($(this).parent().next());
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h3>计划吧</h3>
+        <input type="text" name="txt" id="txt">
+        <input type="button" name="添加" id="btn" value="添加">
+        <ul class="list">
+            <li><span>列表文字1</span><a href="#" class="delet">删除</a><a href="#" class="up">上<a href="#" class="down">下</a></a></li>
+            <li><span>列表文字2</span><a href="#" class="delet">删除</a><a href="#" class="up">上<a href="#" class="down">下</a></a></li>
+            <li><span>列表文字3</span><a href="#" class="delet">删除</a><a href="#" class="up">上<a href="#" class="down">下</a></a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //第一种写法
+        // var person = new Object();
+        //这就是一个JavaScript对象
+        // 可以直接写成字典形式
+        var person = {
+            Name : 'Tom',
+            Age : 12,
+            showName : function(){
+                alert('名字是：'+this.Name);
+            },
+            showAge : function(){
+                alert('年龄是：'+this.Age);
+            },
+        }
+        //调用对象属性
+        alert(person.Name);
+        // 调用对象方法
+        person.showName();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

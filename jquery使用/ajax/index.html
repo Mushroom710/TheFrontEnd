@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Ajax需要在服务器环境下运行 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #ddd;
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            margin: 100px auto 0;
+            background-color: #bfa;
+        }
+
+        .welcome {
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            // 完整写法
+            //给那个登录绑定一个click事件，点击登录时就触发Ajax
+            // $('.login').click(function(){
+            //     $.ajax({
+            //         url: 'data.json',
+            //         type: 'get',
+            //         dataType: 'json',
+            //         success: function (data) {
+            //             // alert('登录成功！');
+            //             $('.login').hide();
+            //             $('.welcome').children().html(data.name).parent().show();
+            //         },
+            //         error: function () {
+            //             alert('服务器超时。。。');
+            //         },
+            //     })
+            // })
+
+            //新写法
+            // $('.login').click(function () {
+            //     $.ajax({
+            //         url: 'data.json',
+            //         type: 'get',
+            //         dataType: 'json',
+            //     }).done(function (data) {
+            //         $('.login').hide();
+            //         $('.welcome').children().html(data.name).parent().show();
+            //     }).fail(function () {
+            //         alert('服务器超时。。。');
+            //     });
+            // })
+
+            //简写方式：
+            //出错就不提示用户了
+            // 默认是 JSON 数据格式
+            $('.login').click(function () {
+                $.get('data.json',function(data){
+                    $('.login').hide();
+                    $('.welcome').children().html(data.name).parent().show();
+                });
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="welcome">欢迎您：<em>张三</em></div>
+        <div class="login"><a href="#">登录</a></div>
+    </div>
+</body>
+
+</html>

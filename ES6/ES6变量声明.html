@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //let、const没有预解析
+        // var有预解析
+        alert(iNum1);
+        var iNum1 = 12;
+        alert(iNum1);
+
+        //会在浏览器的控制台报错
+        // alert(iNum2);
+        let iNum2 = 13;
+        alert(iNum2);
+
+        //const定义的变量不能被修改
+        //同样会报错
+        // alert(iNum3);
+        const iNum3 = 20;
+        console.log(iNum3);
+        alert(iNum3);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

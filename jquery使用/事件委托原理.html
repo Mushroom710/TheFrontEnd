@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../helloworld/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            // $li = $('.list li');
+            $ul = $('.list');
+            //这种写法可以，但是性能不高。原因是$li这个对象中包含8个li，
+            // 每一次操作相当于在内部做一次循环
+            // $li.click(function(){
+            //     $(this).css({"background":"green"});
+            // })
+
+            //事件委托写法
+            //利用事件冒泡的特性，把子元素的事件操作绑定到父元素上，可以提高性能
+            //事件委托函数 委托元素 事件 函数
+            $ul.delegate('li','click',function(){
+                $(this).css("background","gold");
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <ul class="list">
+        <li>列表文字</li>
+        <li>列表文字</li>
+        <li>列表文字</li>
+        <li>列表文字</li>
+        <li>列表文字</li>
+        <li>列表文字</li>
+        <li>列表文字</li>
+        <li>列表文字</li>
+    </ul>
+</body>
+</html>
