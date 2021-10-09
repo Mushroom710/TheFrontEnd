@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //普通函数定义
+        function fnAdd(a,b){
+            alert(a+b);
+        }
+        fnAdd(2,3);
+        // 匿名函数
+        let fnAdd2 = function (a,b) {
+            alert(a+b);
+        }
+        fnAdd2(4,5);
+
+        //匿名函数可以改成箭头函数写法
+
+        let fnAdd3 = (a,b) =>{
+            alert(a+b);
+        }
+        fnAdd3(5,5);
+
+        //只有一个参数可以省略小括号
+        let fnadd4 = a =>{
+            alert(a);
+        }
+        fnadd4('hello');
+
+        //没有参数
+        let fnAdd5 = ()=>{
+            alert('没有参数');
+        }
+
+        fnAdd5();
+        //只有一个return语句，可以省略return和大括号
+        let fnAdd6 = a=> a;
+        fnAdd6('一个return');
+        //返回一个JavaScript对象，需要给JavaScript对象加括号
+        let fnReturn = ()=>({name:'tom',age:18});
+
+        alert(fnReturn().age);
+
+        //箭头函数绑定this
+        let person = {
+            name:'tom',
+            age : 18,
+            //这种写法会让this指定为window对象，window对象是JavaScript内置的一个对象
+            // showName : function(){
+            //     setTimeout(function(){
+            //         alert(this.name);
+            //     },1000);
+            // }
+            // 改为箭头函数写法
+            //此时的this指代当前对象
+            showName : function(){
+                setTimeout(() => {
+                    alert(this.name);
+                }, 1000);
+            }
+        }
+        person.showName();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

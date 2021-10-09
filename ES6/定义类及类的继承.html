@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 与java类基本一致
+        //定义类，类名首字母大写
+        class Person{
+            //构造器
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            // 定义一些方法
+            showName(){
+                alert('名字是：'+this.name);
+            }
+            showAge(){
+                alert('年龄是：'+this.age);
+            }
+        }
+
+        //通过类实例化对象
+        let person = new Person('tom',20);
+        //调用方法
+        person.showName();
+        person.showAge();
+
+        // 类的继承
+        //子类可以重写父类的方法，与java一致
+        class Student extends Person{
+            constructor(name,age,school){
+                super(name,age);//调用父类的构造方法
+                this.school = school;
+            }
+            showSchool(){
+                alert('学校是：'+this.school);
+            }
+
+            showName(){
+                alert('重写父类的方法：'+this.name);
+            }
+        }
+
+        let student = new Student('鲲鲲',12,'初中');
+        student.showName();
+        student.showAge();
+        student.showSchool();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
