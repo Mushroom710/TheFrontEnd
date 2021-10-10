@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #bfa;
+        }
+
+        .tab_con {
+            width: 500px;
+            height: 350px;
+            margin: 50px auto 0;
+        }
+
+        .tab_btn {
+            height: 50px;
+        }
+
+        .tab_btn input {
+            width: 100px;
+            height: 50px;
+            background: #ddd;
+            border: 0;
+            outline: none;
+        }
+
+        .tab_btn .active {
+            background: gold;
+        }
+
+        .tab_cons {
+            height: 300px;
+            background: gold;
+        }
+
+        .tab_cons div {
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            display: none;
+            font-size: 30px;
+        }
+
+        .tab_cons .current {
+            display: block;
+        }
+    </style>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <!-- babel文件是一个转换编译器，它能将ES6语法及jsx语法转换成可以在浏览器运行的代码 -->
+    <script src="js/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Tab extends React.Component {
+            constructor(props) {
+                super(props);
+                //用于控制那个选项卡高亮
+                this.state = { iNow: 0 };
+            }
+            // 修改高亮的选项卡
+            fnChange(i){
+                this.setState({
+                    iNow : i,
+                })
+            }
+
+            render() {
+                return (
+                    // 把整个tab_con当做一个对象，塞进root里
+                    <div className="tab_con">
+                        <p>{this.state.iNow}</p>
+                        <div className="tab_btn">               {/*用一个三元表达式，控制高亮的选项卡*/}
+                            <input type="button" value="按钮一" className={(this.state.iNow == 0) ? "active" : ""} onClick={this.fnChange.bind(this,0)}/>
+                            <input type="button" value="按钮二" className={(this.state.iNow == 1) ? "active" : ""} onClick={this.fnChange.bind(this,1)}/>
+                            <input type="button" value="按钮三" className={(this.state.iNow == 2) ? "active" : ""} onClick={this.fnChange.bind(this,2)}/>
+                        </div>
+                        <div className="tab_cons">
+                            <div className={(this.state.iNow == 0) ? "current" : ""}>这是选项卡一的内容</div>
+                            <div className={(this.state.iNow == 1) ? "current" : ""}>这是选项卡二的内容</div>
+                            <div className={(this.state.iNow == 2 ) ? "current" : ""}>这是选项卡三的内容</div>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Tab />,document.getElementById('root'));
+    </script>
+</body>
+
+</html>

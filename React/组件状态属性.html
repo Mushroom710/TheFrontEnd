@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <!-- babel文件是一个转换编译器，它能将ES6语法及jsx语法转换成可以在浏览器运行的代码 -->
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 做一个按钮，点击数字递增
+        class Increase extends React.Component{
+            constructor(props){
+                super(props);//调用父类的构造方法初始化props
+                this.state = {iNum:10};
+                //可以在组件初始化时，将方法绑定this
+                this.fnAdd = this.fnAdd.bind(this);
+            }
+
+            //只可以使用setState来改变state中的值
+            //setState里面可以传一个对象，也可以传一个函数，函数需要返回一个对象
+            fnAdd(){
+                //使用setState来改变state中的值
+                //prevState指的是state最新的值
+                /*
+                this.setState(function (prevState) {
+                    return ({iNum:prevState.iNum+1});
+                })
+                
+                */ 
+
+                this.setState(prevState=>({iNum:prevState.iNum+1}));
+            }
+
+            render(){
+                return (
+                    <div>
+                        <p>{this.state.iNum}</p>
+                        <input type="button" value="递增" onClick = {this.fnAdd} />    
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Increase />,document.getElementById('root'));
+
+    </script>
+</body>
+</html>

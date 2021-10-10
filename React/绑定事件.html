@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <!-- babel文件是一个转换编译器，它能将ES6语法及jsx语法转换成可以在浏览器运行的代码 -->
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class HelloTom extends React.Component{
+            //点击事件处理函数
+            fnHello(){
+                alert('hello Tom');
+            }
+
+            render(){
+                                                            //绑定点击事件
+                return <input type="button" value="打招呼" onClick={this.fnHello}/>
+            }
+        }
+
+        class HelloWho extends React.Component{
+            fnHello(){
+                //如果不绑定，就会出现this指代不明
+                alert('hello ,'+this.props.name);
+            }
+
+            render(){           
+                //在事件调用方法时，如果方法里面使用了this，            在这里就需要绑定this
+                return <input type="button" value="打招呼" onClick={this.fnHello.bind(this)}/>;
+            }
+        }
+
+        // ReactDOM.render(<HelloTom />,document.getElementById('root'));
+        ReactDOM.render(<HelloWho name="Jack" />, document.getElementById('root'));
+
+
+    </script>
+</body>
+</html>

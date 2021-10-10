@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <!-- babel文件是一个转换编译器，它能将ES6语法及jsx语法转换成可以在浏览器运行的代码 -->
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+    <!-- 事件：onChange -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class InputText extends React.Component{
+            constructor(props){
+                super(props);
+                //这个值改变，就会影响input框的文本改变
+                this.state={iNum:10};
+            }
+            // ev 指的是系统自动产生的事件对象
+            // ev.target指的是发生事件的元素
+            fnChange(ev){
+                this.setState({
+                    iNum:ev.target.value,
+                })
+            }
+
+            render(){
+                return(
+                    //容器，只能有一个大容器
+                    <div>
+                        {/*这时候就需要双向绑定 onChange 事件*/}
+                        <p>{this.state.iNum}</p>
+                        <input type="text" value={this.state.iNum} onChange={this.fnChange.bind(this)}/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<InputText />,document.getElementById('root'));
+    </script>
+</body>
+</html>

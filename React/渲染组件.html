@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <!-- babel文件是一个转换编译器，它能将ES6语法及jsx语法转换成可以在浏览器运行的代码 -->
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        //函数定义组件：不使用，扩展性低
+        //name属性是在渲染组件时，通过定义属性传入进来的
+        function fnWelcome(props){
+            return <h1>hello,{props.name}</h1>
+        }
+
+        // 类的方式定义组件：需要继承React.Component类
+        class Welcome extends React.Component{
+            //主要方法
+            render(){
+                return <h1>hello,{this.props.name}</h1>
+            }
+        }
+
+        //组件组合：定义一个大的组件，组合上面的组件
+        class WelcomeAll extends React.Component{
+            render(){
+                return (
+                    <div>
+                        <Welcome name="Sala" />
+                        <Welcome name="Marry" />
+                        <Welcome name="Jack" />
+                    </div>
+                );
+            }
+        }
+        //组件名要写成一个自结束标签的样子
+        // 才可一作为一个jsx对象传给ReactDOM.render()
+        const el = <Welcome name="zhangsan"/>
+
+        // ReactDOM.render(el,document.getElementById('root'));
+        
+        //组件渲染和jsx对象一样，通过ReactDOM.render()方法来渲染组件
+        // 相当于：this.props = {name:'Tom'}
+        //渲染小组件
+        // ReactDOM.render(<Welcome name="Tom"/>,document.getElementById('root'));
+
+        //组合组件渲染
+        ReactDOM.render(<WelcomeAll />,document.getElementById('root'));
+    </script>
+</body>
+</html>

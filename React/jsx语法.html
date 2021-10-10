@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            text-decoration: none;
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <!-- babel文件是一个转换编译器，它能将ES6语法及jsx语法转换成可以在浏览器运行的代码 -->
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+    <!-- 只能有一个root -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        let iNum = 100;
+        let sTr = 'helloworld1208';
+        let ok = true;
+        let url = 'www.baidu.com';
+
+        function fnRev(s){
+            return s.split('').reverse().join();
+        }
+        //jsx对象
+        let el = (
+            <div>
+                <h2>jsx语法</h2>
+                <p>{ iNum+100 }</p>
+                <p>{ sTr }</p>
+                {/*注释写法*/}
+                {/*这个操作相当于字符串反转*/}
+                <p>{ sTr.split('').reverse().join('')}</p>
+                <p>{ fnRev(sTr) }</p>
+                {/*三元运算符*/}
+                <p>{ok?'yes':'no'}</p>
+                {/*属性写成这样即可 class需要改写成className*/}
+                <a href={url} className="a">这是一个链接</a>    
+            </div>
+        );
+
+            //        传入一个jsx对象  选择标签，返回对象
+        ReactDOM.render(el,document.getElementById('root')    
+        )
+    </script>
+</body>
+</html>
