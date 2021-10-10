@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        // 异步操作，多个Ajax请求数据，并在所有Ajax请求完成后再执行下一步操作
+        
+        // 老方法：只有一个Ajax
+        // $.ajax({
+        //     url : 'js/data01.json',
+        //     type : 'get',
+        //     dataType:'json',
+        //     success:function(dat1){
+        //         console.log(dat1);
+        //     }
+        // })
+
+        // 多个Ajax，采用嵌套方式来达到异步
+        //这种写法不够好，多个嵌套在一起很难读
+        // $.ajax({
+        //     url:'js/data01.json',
+        //     type:'get',
+        //     dataType:'json',
+        //     success:function(dat1){
+        //         $.ajax({
+        //             url:'js/data02.json',
+        //             type:'get',
+        //             dataType:'json',
+        //             success:function(dat2){
+        //                 console.log([dat1,dat2]);
+        //             }
+        //         })
+        //     },
+        //     error:function(err){
+        //         console.log(err);
+        //     }
+        // })
+
+        //promise对象可以完美解决这个问题
+        //实例化一个promise对象           请求成功  请求失败
+        var pro01 = new Promise(function(resolve,reject){
+            $.ajax({
+                url:'js/data01.json',
+                type:'get',
+                dataType:'json',
+            }).done(function(dat){//这两个函数都叫回调函数
+                resolve(dat);//用resolve来处理请求回来的数据
+            }).fail(function(err){
+                reject(err);//用reject处理请求失败的情况
+            })
+        })
+
+        // 再来一个Ajax
+        var pro02 = new Promise(function(resolve,reject){
+            $.ajax({
+                url:'js/data02.json',
+                type:'get',
+                dataType:'json',
+            }).done(function(dat){
+                resolve(dat);
+            }).fail(function(err){
+                reject(err);
+            });
+        });
+        //单个Ajax
+        //通过promise来处理回调
+        // pro01.then(function(dat){
+        //     console.log(dat);
+        // }).catch(function(err){
+        //     console.log(err);
+        // });
+
+        //多个Ajax
+        Promise.all([pro01,pro02]).then(result=>console.log(result));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

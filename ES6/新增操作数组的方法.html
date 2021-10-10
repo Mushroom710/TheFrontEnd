@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let aList = [1,2,3,4];
+        let sList = ['a','b'];
+
+        // map方法可以分别处理数组中的成员，
+        // 返回一个新数组，也可以用于遍历数组
+        //遍历aList       值  下标
+        aList.map(function(a,i){
+            // alert(a | i);
+        });
+        // 参数a就是aList的每一个元素
+        let aList3 = aList.map(function(a){
+            // alert(a);
+        });
+        //aList3是一个新数组，长度为aList的长度
+        // aList3.push(5);
+        console.log(aList3);
+        console.log('这是aList：'+aList);
+
+        // concat方法用于连接新的数组成员或者其他数组
+        // 返回一个新数组
+        let arr = [1,2];
+        let aList4 = arr.concat(4,5);
+        let aList5 = aList.concat(sList);
+        console.log('这是aList4：'+aList4);
+        console.log('这是aList5：'+aList5);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
