@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue的库 -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        Vue.config.productionTip = false//阻止vue在启动时生成生产提示
+        let number = 18;
+        let person = {
+            name:'zhangsan',
+            address:'wwww',
+        };
+
+        // 给person对象添加一个age属性
+        // 通过defineProperty添加,这是一个ES6函数
+        Object.defineProperty(person,'age',{
+            // 这里面放一些配置项
+            // value:18,
+            // 这些配置不能和get和set同时出现
+            enumerable:true,//控制属性是否可以枚举，默认值是false
+            // writable:true,//控制属性是否可以被修改，默认值是false
+            // configurable:true,//控制属性是否可以被删除，默认值是false
+
+            // 当读取person的age属性时，get函数（getter）就会被调用
+            get(){
+                console.log('读取age属性');
+                return number;
+            },
+           // 当修改person的age属性时，set函数（setter）就会被调用
+            set(value){
+                console.log('修改了age属性，且值是',value);
+                number = value;
+            }
+        });
+        console.log(person);
+        console.log(Object.keys(person));
+    </script>
+</body>
+</html>
