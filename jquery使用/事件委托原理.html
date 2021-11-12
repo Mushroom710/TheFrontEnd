@@ -22,6 +22,10 @@
             $ul.delegate('li','click',function(){
                 $(this).css("background","gold");
             })
+            $('#select').change(function(){
+                var rs = $(this).find('option:selected').text();
+                alert(rs);
+            })
         })
 
     </script>
@@ -37,5 +41,10 @@
         <li>列表文字</li>
         <li>列表文字</li>
     </ul>
+    <select name="" id="select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
 </body>
 </html>
