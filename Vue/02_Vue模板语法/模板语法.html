@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板语法</title>
+    <!-- 引入Vue的库 -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h1>差值语法</h1>
+        <h1>hello ,{{name}}</h1>
+        <hr>
+
+        <h1>指令语法</h1>
+        <h1>在bilibili大学学习</h1>
+        <a href="https://www.bilibili.com">前往学习1{{school.name}}</a>
+        <br>
+        <!-- v-bind 是一个指令， js表达式 -->
+        <a v-bind:href="url">前往学习2{{school.name}}</a>
+        <br>
+        <a v-bind:href="school.url.toUpperCase()">这是百度</a>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false//阻止vue在启动时生成生产提示
+
+        //实例化一个vue对象 
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'zhangsan',
+                url: 'https://www.bilibili.com',
+                school: {
+                    name: 'lisi',
+                    url: 'https://www.baidu.com'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
