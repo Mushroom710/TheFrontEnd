@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例_methods实现</title>
+    <!-- 引入vue的库 -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root"><div id="root">
+        <!-- 插值语法 -->
+        性：<input type="text" v-model="firstName"> <br> <br>
+        名：<input type="text" v-model="lastName"> <br> <br>
+        <!-- 使用methods实现,方法名必须加括号 -->
+        全名：<span>{{fullName()}}</span>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false//阻止vue在启动时生成生产提示
+
+
+        new Vue({
+            el:'#root',
+            data:{
+                firstName:'张',
+                lastName:'三'
+            },
+            methods:{
+                fullName(){
+                    return this.firstName+'-'+this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
