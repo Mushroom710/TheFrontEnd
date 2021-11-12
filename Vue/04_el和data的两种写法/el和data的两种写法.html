@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue的库 -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>hello , {{name}}</h1>
+
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false//阻止vue在启动时生成生产提示
+
+
+        // const v = new Vue({
+        //     // el:'#root',//el的第一种写法
+        //     data: {
+        //         name: 'zhangsan'
+        //     }
+        // });
+        // v.$mount('#root');//第二种写法，挂载式
+
+        const v = new Vue({
+            el:'#root',
+            // data:{//对象式写法
+            //     name:'zhangsan',
+            // },
+            // data:function(){//data的函数式写法
+            //     return {
+            //         name:'lisi'
+            //     }
+            // },
+            data(){//函数式简写形式
+                return{
+                    name:'wangwu'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
