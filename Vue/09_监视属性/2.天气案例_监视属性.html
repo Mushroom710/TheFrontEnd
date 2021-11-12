@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例_监视属性</title>
+    <!-- 引入vue的库 -->
+    <script src="../js/vue.js"></script>
+</head>
+<!-- 
+监视属性watch：
+	1.当被监视的属性变化时, 回调函数自动调用, 进行相关操作
+	2.监视的属性必须存在，才能进行监视！！
+	3.监视的两种写法：
+			(1).new Vue时传入watch配置
+			(2).通过vm.$watch监视
+-->
+<body>
+    <div id="root">
+        <h1>今天是个上分的好日子~~</h1>
+        <!-- info是一个计算属性，因为{{}} 包含的是一个方法-->
+        <h1>天气{{info}}</h1>
+        <!-- 绑定事件的时候：@xxx可以写一些简单的语句 -->
+        <!-- <button @click="isHot = !isHot">换个天气</button></button> -->
+        <button @click="changeWeather">换个天气</button></button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false//阻止vue在启动时生成生产提示
+
+
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                isHot:true,
+            },
+            computed:{
+                // 返回的是一个属性
+                info(){
+                    return this.isHot?'针不错':'炎热';
+                }
+            },
+            methods: {
+                changeWeather(){
+                    this.isHot = !this.isHot;
+                }
+            },
+            // 不仅可以监视普通属性，还可以监视计算属性
+            watch:{
+                isHot:{
+                    immediate:true,//初始化时让handler调用一下
+					//handler什么时候调用？当isHot发生改变时。
+                    handler(newValue,oldValue){
+                        console.log('isHot被修改',newValue,oldValue);
+                    }
+                },
+                info:{
+                    handler(newValue,oldValue){
+                        console.log('info被修改',newValue,oldValue);
+                    }
+                }
+            }
+        })
+        // 通过vm的$watch来监视属性
+        vm.$watch('isHot',{
+            immediate:true,//初始化时让handler调用一下
+			//handler什么时候调用？当isHot发生改变时。
+            handler(newValue,oldValue){
+                console.log('这是vm.$watch("isHot")被修改',newValue,oldValue);
+            }
+        })
+    </script>
+</body>
+</html>
