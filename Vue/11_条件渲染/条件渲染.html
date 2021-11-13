@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue的库 -->
+    <script src="../js/vue.js"></script>
+</head>
+<!-- 
+条件渲染：
+	1.v-if
+		写法：
+				(1).v-if="表达式" 
+				(2).v-else-if="表达式"
+				(3).v-else="表达式"
+		适用于：切换频率较低的场景。
+		特点：不展示的DOM元素直接被移除。
+		注意：v-if可以和:v-else-if、v-else一起使用，但要求结构不能被“打断”。
+
+	2.v-show
+		写法：v-show="表达式"
+		适用于：切换频率较高的场景。
+		特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉
+		
+	3.备注：使用v-if的时，元素可能无法获取到，而使用v-show一定可以获取到。
+ -->
+
+<body>
+    <div id="root">
+        <!-- 使用v-show做条件渲染 -->
+        <h2 v-show='true'>{{name}}</h2>
+        <!-- 使用v-if做条件渲染 -->
+        <h2 v-if='false'>{{name}}</h2>
+        <!-- v-else和v-else-if -->
+        <button @click='n++'>点我n+1</button><label for="">{{n}}</label>
+        <h2 v-if='n%3===0'>Angular</h2>
+        <h2 v-else-if='n%3===1'>React</h2>
+        <h3 v-else-if='n%3===2'>Vue</h3>
+        <h3 v-else>纳尼</h3>
+
+        <!-- v-if与template的配合使用 ,template解析之后会脱去，不会影响DOM结构-->
+        <template v-if='n%3==2'>
+            <h2>你好</h2>
+            <h2>世界</h2>
+        </template>
+
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false//阻止vue在启动时生成生产提示
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '张三',
+                n: -1,
+            },
+
+        });
+    </script>
+</body>
+
+</html>
