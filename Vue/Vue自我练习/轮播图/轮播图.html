@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue做的轮播图</title>
+    <script src="../../js/vue.js"></script>
+    <style>
+        #root{
+            position: relative;
+            width: 1500px;
+            height: 730px;
+            background: aqua;
+            overflow: hidden;
+        }
+        #root img {
+            width: 360px;
+            height: 720px;
+            /* box-shadow: 5px 10px 5px #888888; */
+        }
+        #picBox{
+            width: 3000px;
+            height: 730px;
+            position: absolute;
+            top: 0;
+            left: -40px;
+        }
+        ul li{
+            list-style: none;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <ul id="picBox">
+            <li v-for="(pic,index) in pictures" :key="index"><img :src=pic></li>
+        </ul>
+    </div>
+
+    <!-- <div id="p1">helloworld</div> -->
+
+    <script text="text/javascript">
+        Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                pictures: ['../picture/3张图.jpg','../picture/4张图.jpg', '../picture/5张图.jpg', '../picture/6张图.jpg',
+            '../picture/7张图.jpg', '../picture/8张图.jpg', '../picture/9张图.jpg', '../picture/10张图.jpg'],
+            },
+            methods:{
+                copyPic(){
+                    return this.pictures.push(this.pictures);
+                }
+            },
+        })
+        var oimg = document.getElementById('picBox');
+        var oroot = document.getElementById('root');
+        var iLeft = 0;
+        var speed = -1;
+        var speed2 = speed;
+        setInterval(fnmove,10);
+
+        function fnmove() {
+            iLeft += speed
+            if(iLeft > 0){
+                speed = -speed;
+            }else if(iLeft <= -1440){
+                speed = -speed;
+            }
+            oimg.style.left = iLeft + 'px';
+        }
+
+        oroot.onmouseover = function(){
+            speed2 = speed;
+            speed = 0;
+        }
+        oroot.onmouseout = function(){
+            speed = speed2;
+        }
+    </script>
+</body>
+
+</html>
