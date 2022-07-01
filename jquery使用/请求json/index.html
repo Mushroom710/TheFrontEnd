@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Ajax需要在服务器环境下运行 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #ddd;
+        }
+        .box{
+            height: 100px;
+            width: 100px;
+            margin: 100px auto 0;
+            background-color: #bfa;
+        }
+        .welcome{
+            display: none;
+        }
+    </style>
+    <script src="../../FrameWork/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                url:'http://106.14.82.240:8889/api/getdata',
+                type:'get',
+                dataType:'json',
+                success:function(data){
+                    var obj = JSON.parse(data)
+                    console.log(obj)
+                },
+                error:function(){
+                    alert('服务器超时。。。');
+                },
+            })
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

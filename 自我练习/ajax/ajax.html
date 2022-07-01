@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../FrameWork/jquery-1.12.4.min.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: aqua;
+        }
+        .welcome{
+            display: none;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('.login').click(function(){
+                $.ajax({
+                    type:'get',
+                    url:'data.json',
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="welcome">成功</div>
+        <div class="login">登录</div>
+    </div>
+</body>
+</html>
